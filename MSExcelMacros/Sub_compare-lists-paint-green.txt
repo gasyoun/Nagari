@@ -1,0 +1,17 @@
+﻿Sub compare-lists-paint-green()
+' Сравнить эталонный список с сомнительным. Фон ячеек (= слова), которые отличаются, покращен зеленым цветом.
+Sheets("737 words left after fuzzy").Select
+Dim LastRow As Integer
+LastRow = Sheets("737 words left after fuzzy").Cells(Sheets("737 words left after fuzzy").Rows.Count, "B").End(xlUp).Row
+Dim i As Integer
+Dim y As Integer
+    For y = 1 To LastRow
+        For i = 1 To Len(Cells(y, 2))
+            If Mid(Cells(y, 2), i, 1) <> Mid(Cells(y, 3), i, 1) Then
+                Cells(1, 2).Characters(i, 1).Font.ColorIndex = 3
+                Cells(1, 3).Characters(i, 1).Font.ColorIndex = 3
+            End If
+        Next
+    Next
+    MsgBox ("TheEnd")
+End Sub
